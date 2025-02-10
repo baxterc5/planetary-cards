@@ -134,17 +134,3 @@ body {
 .planet-row .planet-card {
   flex: 0 0 calc(25% - var(--planet-spacing));
 }
-
-@media (max-width: 768px) {
-  .planet-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .sun-card {
-    margin-bottom: 20px;
-  }
-
-  .planet-card {
-    width: 45%;
-  }
-}
