@@ -1,5 +1,5 @@
 ---
-title: 11ty Boilerplate
+title: Planetary Playing Cards
 ---
 
 <!DOCTYPE html>
@@ -8,15 +8,37 @@ title: 11ty Boilerplate
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ title }}</title>
-  <link rel="stylesheet" href="/styles/screen.css">
+  <!-- Correct link to the stylesheet -->
+  <link rel="stylesheet" href="/styles/screen.css"> <!-- Ensure the path is correct -->
 </head>
 <body>
   <nav>
     <ul>
-      <li><a href="/" title="Go home">Home</a></li>
-      <li><a href="/about/" title="About the boilerplate">About</a></li>
+      <li><a href="/" title="Home">Home</a></li>
+      <li><a href="/about/" title="About">About</a></li>
     </ul>
   </nav>
-    {{ content }}
+
+  <main class="planet-grid">
+    <!-- Sun Card -->
+    <div class="sun-container">
+      {% for planet in planets %}
+        {% if planet.name == "Sun" %}
+          <!-- Render Sun Card -->
+          {% include "planet-card.liquid" with planet %}
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <!-- Planet Cards -->
+    <div class="planet-row">
+      {% for planet in planets %}
+        {% if planet.name != "Sun" %}
+          <!-- Render Planet Cards -->
+          {% include "planet-card.liquid" with planet %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </main>
 </body>
 </html>

@@ -1,50 +1,133 @@
+/* Root Variables for Reusability */
+:root {
+  --main-bg: #2D3142;
+  --text-color: #EAE8FF;
+  --planet-card-width: 180px;  /* Width of the planet cards */
+  --planet-card-height: 250px; /* Height of the planet cards */
+  --planet-circle-size: 80px;  /* Size of the planet circle inside each card */
+  --sun-size: 150px;           /* Larger size for the Sun circle */
+  --border-radius: 15px;       /* Rounded corners for planet cards */
+  --planet-spacing: 20px;
+  --planet-hover-color: #FFCC00; /* Hover effect color */
+}
+
+/* General Styles */
 body {
-    font-family: Helvetica, sans-serif;
-    color: #EAE8FF;
-    background: #2D3142;
-    padding: 0 40px;
-    text-align: center;
+  font-family: Helvetica, sans-serif;
+  background: var(--main-bg);
+  color: var(--text-color);
+  padding: 20px;
+  text-align: center;
 }
 
-nav {
-    margin: 40px auto 0 auto;
-    width: 250px;
-    border-radius: 50px;
-    background: #212431;
+/* Flexbox Layout for the Page */
+.planet-grid {
+  display: flex;
+  justify-content: flex-start; /* Align everything to the left */
+  gap: var(--planet-spacing);
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-nav ul {
-    display: flex;
-    justify-content: space-evenly;
-    margin: 0;
-    padding: 0;
+/* Styling for the Sun Card */
+.sun-card {
+  background: #212431;
+  color: var(--text-color);
+  width: calc(var(--planet-card-width) * 2); /* Sun card width is double */
+  height: calc(var(--planet-card-height) * 2); /* Sun card height is double */
+  border-radius: var(--border-radius);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  flex-shrink: 0; /* Prevent Sun card from shrinking */
 }
 
-nav ul li {
-    list-style-type: none;
-    margin: 0;
+.sun-card h2 {
+  margin-top: 10px;
+  font-size: 1.2em;
 }
 
-nav ul li a {
-    display: inline-block;
-    padding: 20px;
-    color: #EAE8FF;
-    text-decoration: none;
-    font-size: 1.2em;
+.sun-card .planet-avatar {
+  background: #FFCC00; /* Sun color */
+  width: var(--sun-size);
+  height: var(--sun-size);
+  border-radius: 50%;
 }
 
-h1 {
-    font-size: 8em;
-    letter-spacing: -2px;
+/* Planet Card Styling */
+.planet-card {
+  background: #212431;
+  color: var(--text-color);
+  width: var(--planet-card-width);
+  height: var(--planet-card-height);
+  border-radius: var(--border-radius);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  transition: transform 0.3s ease;
+  text-align: center;
 }
 
-h1 strong {
-    background: rgb(34,193,195);
-    background: linear-gradient(45deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.planet-card:hover {
+  transform: scale(1.05);
 }
 
-img.about {
-    opacity: 0.5;
+.planet-card h2 {
+  font-size: 1em;
+  margin-top: 10px;
+}
+
+.planet-card p {
+  margin-top: 10px;
+  font-size: 0.9em;
+}
+
+.planet-card .planet-avatar {
+  width: var(--planet-circle-size);
+  height: var(--planet-circle-size);
+  border-radius: 50%;
+}
+
+/* Planet Color Classes */
+.mercury { background: gray; }
+.venus { background: yellow; }
+.earth { background: blue; }
+.mars { background: red; }
+.jupiter { background: orange; }
+.saturn { background: gold; }
+.uranus { background: lightblue; }
+.neptune { background: darkblue; }
+
+/* Flexbox layout for planet cards in two rows */
+.planet-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--planet-spacing);
+  width: 100%;
+}
+
+/* Ensure four planet cards per row */
+.planet-row .planet-card {
+  flex: 0 0 calc(25% - var(--planet-spacing)); /* 4 planets per row */
+}
+
+/* Responsive Styles for Smaller Screens */
+@media (max-width: 768px) {
+  .planet-grid {
+    flex-direction: column; /* On small screens, stack everything */
+    align-items: center;
+  }
+
+  .sun-card {
+    margin-bottom: 20px;
+  }
+
+  /* On mobile, 2 planets per row */
+  .planet-row .planet-card {
+    flex: 0 0 calc(50% - var(--planet-spacing)); /* 2 planets per row */
+  }
 }

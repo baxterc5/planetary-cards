@@ -1,0 +1,14 @@
+{% if planet.name == "Sun" %}
+  <!-- Special styling for the Sun card -->
+  <article class="sun-card">
+    <div class="planet-avatar"></div>
+    <h2>{{ planet.name }}<br>Type: G2V</h2>
+  </article>
+{% else %}
+  <!-- Regular planet card -->
+  <article class="planet-card">
+    <div class="planet-avatar {{ planet.class }}"></div>
+    <h2>{{ planet.name }}</h2>
+    <p>{{ planet.au }} AU</p>
+  </article>
+{% endif %}
