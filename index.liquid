@@ -9,18 +9,15 @@ title: Planetary Playing Cards
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ title }}</title>
   <!-- Link to CSS -->
-  <link rel="stylesheet" href="/styles/screen.css"> <!-- Ensure the path is correct -->
+  <link rel="stylesheet" href="/styles/screen.css">
 </head>
 <body>
-  <nav>
-    <ul>
-      <li><a href="/" title="Home">Home</a></li>
-      <li><a href="/about/" title="About">About</a></li>
-    </ul>
-  </nav>
+  <header>
+    <h1>{{ title }}</h1>
+  </header>
 
   <main class="planet-grid">
-    <!-- Sun Card -->
+    <!-- Sun Card (left side, spanning two rows) -->
     <div class="sun-container">
       {% for planet in planets %}
         {% if planet.name == "Sun" %}
@@ -30,7 +27,7 @@ title: Planetary Playing Cards
       {% endfor %}
     </div>
 
-    <!-- Planet Cards -->
+    <!-- Planet Cards (remaining 8 sections) -->
     <div class="planet-row">
       {% for planet in planets %}
         {% if planet.name != "Sun" %}
@@ -40,6 +37,5 @@ title: Planetary Playing Cards
       {% endfor %}
     </div>
   </main>
-
 </body>
 </html>
